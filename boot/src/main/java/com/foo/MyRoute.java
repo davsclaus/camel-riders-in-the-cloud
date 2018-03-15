@@ -24,20 +24,14 @@ public class MyRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
-
-        onException(Exception.class)
-            .maximumRedeliveries(10)
-            .redeliveryDelay(1000);
-
         from("timer:foo?period=1000")
             .hystrix().id("call-helloswarm")
                 // use Camel {{service}} to lookup service (pluggable service providers)
-                .to("http4:{{service:helloswarm}}/hello?connectionClose=true")
+                //.to("http4:{{service:helloswarm}}/hello?connectionClose=true")
                 // just use DNS name to lookup service in k8s
-//                .to("http4:helloswarm:8080/hello?connectionClose=true")
+                .to("http4:helloswarm:8080/hello?connectionClose=true")
             .onFallback()
-                .setBody().simple("${sysenv.FALLBACK}") // inject via Camel simple language
+                .setBody().simple("{{fallback}}") // inject via Camel simple language
             .end()
             .log("${body}");
     }
