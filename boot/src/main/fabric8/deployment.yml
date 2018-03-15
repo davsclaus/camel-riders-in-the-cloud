@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+          - name: FALLBACK
+            valueFrom:
+             configMapKeyRef:
+                name: my-configmap
+                key: fallback
