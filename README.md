@@ -1,4 +1,4 @@
-# Camel riders in the Cloud
+# Camel microservices with Spring Boot and Kubernetes
 
 Two microservices using Spring Boot and WildFly Swarm with Apache Camel running on Kubernetes.
 
@@ -14,9 +14,8 @@ The diagram below illustrates this:
 
 ### Slides and Video
 
-This source code is used for the DevNation Live webinar, and you can find the slides for the talks in the [slides](slides) directory.
+This source code is used for the JPoint Moscow 2018 conference, and you can find the slides for the talks in the [slides](slides) directory.
 
-The webinar was recorded in March 2018 and the video is posted on posted on [youtube](https://developers.redhat.com/video/youtube/zuEYtMvHN6g/)
 
 ### Prepare shell
 
