@@ -2,11 +2,10 @@
 
 Two microservices using Spring Boot and WildFly Swarm with Apache Camel running on Kubernetes.
 
-There are three Maven projects:
+There are these Maven projects:
 
-* client - Spring Boot application with Camel that triggers every 2nd second to call the hello service and log the response. The client uses Camel client side retry for error handling. 
-* client-hystrix - A client that uses Hystrix as circuit breaker for error handling.
-* helloswarm - WildFly Swarm application hostin a hello service which returns a reply message.
+* boot - Spring Boot application with Camel that triggers every 2nd second to call the hello service and log the response.
+* swarm - WildFly Swarm application hostin a hello service which returns a reply message.
 
 The diagram below illustrates this:
 
@@ -21,7 +20,7 @@ The webinar was recorded in March 2018 and the video is posted on posted on [you
 
 ### Prepare shell
 
-When using Maven tooling you want to setup your command shell for docker/kubernetes which can be done by
+When using Maven tooling you want to setup your command shell for Docker/Kubernetes which can be done by
 
     minikube docker-env
 
@@ -34,10 +33,10 @@ Which tells you how to setup using eval
 
 You can deploy the WildFly Swarm application which hosts the hello service.
 
-    cd helloswarm
+    cd swarm
     mvn install
 
-If the build is success you can deploy to kubernetes using:
+If the build is success you can deploy to Kubernetes using:
 
     mvn fabric8:deploy
 
@@ -46,14 +45,14 @@ If the build is success you can deploy to kubernetes using:
 
 You can deploy the Spring Boot application which is the client calling the hello service
 
-    cd client
+    cd boot
     mvn install
 
-If the build is success you can deploy to kubernetes using:
+If the build is success you can deploy to Kubernetes using:
 
     mvn fabric8:deploy
 
-You should then be able to show the logs of the client, by running `oc get pods` and find the name of the pod that runs the client, and then use `oc logs -f pod-name` to follow the logs.
+You should then be able to show the logs of the client, by running `kubectl get pods` and find the name of the pod that runs the client, and then use `kubectl logs -f pod-name` to follow the logs.
 
 However you can also run the application from the shell and have logs automatic tailed using
 
@@ -65,7 +64,7 @@ And then when you press `cltr + c` then the application is undeployed. This allo
 
 ### Installing Hystrix Dashboard on Kubernetes
 
-The `client-hystrix` application which uses Hystrix can be viewed from the Hystrix Dashboard.
+The `boot` application which uses Hystrix can be viewed from the Hystrix Dashboard.
 
 To install the dashboard you first need to install a hystrix stat collector which is called Turbine:
 
