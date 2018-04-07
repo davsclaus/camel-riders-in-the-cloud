@@ -2,6 +2,8 @@
 
 This repository hosts my recent talks about developing Apache Camel microservices on Kubernetes.
 
+![Camel riders in the cloud](camel-talks.png?raw=true "Camel riders in the cloud")
+
 ## Abstract
 
 Apache Camel has fundamentally changed the way enterprise Java developers think about system-to-system integration by making enterprise integration patterns (EIP) a simple declaration in a lightweight application wrapped and delivered as a single JAR.
