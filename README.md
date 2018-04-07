@@ -10,8 +10,6 @@ In this session, we’ll show you how to bring the best practices from the EIP w
 
 Building and designing cloud-native microservices impacts how we develop. We'll discuss practices how to build distributed and fault-tolerant microservices with technologies such as Kubernetes Services, Netflix Hystrix, Camel EIP patterns, and Istio. You will see live demos of us killing containers to test fault tolerance, and more.
 
-This talk is 2/3th slides and 1/3th demos.
-
 ## Content in branches
 
 This git repository has branches for each talk where you can find the content and slides that was used for a particular event.
