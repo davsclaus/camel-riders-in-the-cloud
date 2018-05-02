@@ -53,7 +53,7 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
-        <!--<version>3.5.37</version>-->
+        <!--<version>3.5.38</version>-->
         <!-- TODO: easy way to not include health-check -->
         <version>3.3.5</version>
         <executions>
