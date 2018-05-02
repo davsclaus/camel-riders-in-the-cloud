@@ -42,7 +42,11 @@ If the build is success you can deploy to Kubernetes using:
 
 ### Deploying Spring Boot (client)
 
-You can deploy the Spring Boot application which is the client calling the hello service
+Setup config-map in OpenShift with application configuration:
+
+    oc create configmap my-configmap --from-literal=fallback="Nobody want to talk to me"
+
+Then you can deploy the Spring Boot application which is the client calling the hello service
 
     cd boot
     mvn install
