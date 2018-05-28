@@ -1,4 +1,4 @@
-# Camel microservices with Spring Boot and Kubernetes
+# Develop cloud-native microservices with Apache Camel on Spring Boot and Kubernetes
 
 Two microservices using Spring Boot and WildFly Swarm with Apache Camel running on Kubernetes.
 
@@ -14,7 +14,7 @@ The diagram below illustrates this:
 
 ### Slides and Video
 
-This source code is used for the GR8Conf EU 2018 conference in Copenhagen, and you can find the slides for the talks in the [slides](slides) directory.
+This source code is used for Red Hat Fuse Webinar (June 2018), and you can find the slides for the talks in the [slides](slides) directory.
 
 
 ### Prepare shell
