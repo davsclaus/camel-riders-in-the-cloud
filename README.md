@@ -18,62 +18,69 @@ This source code is used for Red Hat Fuse Webinar (June 2018), and you can find 
 
 
 ### Prepare shell
-
-When using Maven tooling you want to setup your command shell for Docker/Kubernetes which can be done by
-
-    minikube docker-env
-
+ 
+When using Maven tooling you want to setup your command shell for OpenShift which can be done by
+ 
+    minishift docker-env
+ 
 Which tells you how to setup using eval
-
-    eval $(minikube docker-env)
-
-
+ 
+    eval $(minishift docker-env)
+ 
+ 
 ### Deploying WildFly Swarm (server)
-
+ 
 You can deploy the WildFly Swarm application which hosts the hello service.
-
+ 
     cd swarm
     mvn install
-
+ 
 If the build is success you can deploy to Kubernetes using:
-
+ 
     mvn fabric8:deploy
 
 
 ### Deploying Spring Boot (client)
-
-You can deploy the Spring Boot application which is the client calling the hello service
-
+ 
+Setup config-map in OpenShift with application configuration:
+ 
+    oc create configmap my-configmap --from-literal=fallback="Nobody want to talk to me"
+ 
+Then you can deploy the Spring Boot application which is the client calling the hello service
+ 
     cd boot
     mvn install
-
-If the build is success you can deploy to Kubernetes using:
-
+ 
+If the build is success you can deploy to OpenShift using:
+ 
     mvn fabric8:deploy
-
-You should then be able to show the logs of the client, by running `kubectl get pods` and find the name of the pod that runs the client, and then use `kubectl logs -f pod-name` to follow the logs.
-
+ 
+You should then be able to show the logs of the client, by running `oc get pods` and find the name of the pod that runs the client, and then use `oc logs -f pod-name` to follow the logs.
+ 
 However you can also run the application from the shell and have logs automatic tailed using
-
+ 
     mvn fabric8:run
-
+ 
 And then when you press `cltr + c` then the application is undeployed. This allows to quickly run an application and stop it easily as if you are using `mvn spring-boot:run` or `mvn wildfly-swarm:run` etc.
-
-
-
+ 
+ 
+ 
 ### Installing Hystrix Dashboard on Kubernetes
-
+ 
 The `boot` application which uses Hystrix can be viewed from the Hystrix Dashboard.
-
+ 
 To install the dashboard you first need to install a hystrix stat collector which is called Turbine:
-
-    kubectl create -f http://repo1.maven.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28-kubernetes.yml
-
+ 
+    oc create -f http://repo1.maven.org/maven2/io/fabric8/kubeflix/turbine-server/1.0.28/turbine-server-1.0.28-openshift.yml
+    oc policy add-role-to-user admin system:serviceaccount:myproject:turbine
+    oc expose service turbine-server
+ 
 Then you can install the Hystrix Dashboard:
-
-    kubectl create -f http://repo1.maven.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28-kubernetes.yml
-
+ 
+    oc create -f http://repo1.maven.org/maven2/io/fabric8/kubeflix/hystrix-dashboard/1.0.28/hystrix-dashboard-1.0.28-openshift.yml
+    oc expose service hystrix-dashboard --port=8080
+ 
 You should then be able to open the Hystrix Dashboard via
-
-    minikube service hystrix-dashboard
+ 
+    minishift openshift service hystrix-dashboard
 
