@@ -14,7 +14,7 @@ The diagram below illustrates this:
 
 ### Slides and Video
 
-This source code is used for the JEEConf 2018 conference in Kiev, and you can find the slides for the talks in the [slides](slides) directory.
+This source code is used for the JavaZone 2018 conference in Oslo, and you can find the slides for the talks in the [slides](slides) directory.
 
 
 ### Prepare shell
