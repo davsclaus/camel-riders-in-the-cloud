@@ -59,6 +59,24 @@ However you can also run the application from the shell and have logs automatic 
 
 And then when you press `cltr + c` then the application is undeployed. This allows to quickly run an application and stop it easily as if you are using `mvn spring-boot:run` or `mvn wildfly-swarm:run` etc.
 
+### Deploying Spring Boot w/ Hystrix
+
+You can deploy the Spring Boot application which is the client calling the hello service
+
+    cd boot-client
+    mvn install
+
+If the build is success you can deploy to Kubernetes using:
+
+    mvn fabric8:deploy
+
+You should then be able to show the logs of the client, by running `kubectl get pods` and find the name of the pod that runs the client, and then use `kubectl logs -f pod-name` to follow the logs.
+
+However you can also run the application from the shell and have logs automatic tailed using
+
+    mvn fabric8:run
+
+And then when you press `cltr + c` then the application is undeployed. This allows to quickly run an application and stop it easily as if you are using `mvn spring-boot:run` or `mvn wildfly-swarm:run` etc.
 
 
 ### Installing Hystrix Dashboard on Kubernetes
