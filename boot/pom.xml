@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.5.RELEASE</version>
+    <version>2.0.6.RELEASE</version>
     <relativePath/>
   </parent>
 
@@ -60,7 +60,7 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
-        <version>3.5.41</version>
+        <version>3.5.42</version>
         <executions>
           <execution>
             <id>fmp</id>
